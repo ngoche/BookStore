@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service/">
+
+<xs:element name="checkAccount" type="tns:checkAccount"/>
+
+<xs:element name="checkAccountResponse" type="tns:checkAccountResponse"/>
+
+<xs:element name="checkBalance" type="tns:checkBalance"/>
+
+<xs:element name="checkBalanceResponse" type="tns:checkBalanceResponse"/>
+
+<xs:element name="payment" type="tns:payment"/>
+
+<xs:element name="paymentResponse" type="tns:paymentResponse"/>
+
+<xs:complexType name="checkAccount">
+<xs:sequence>
+<xs:element name="accountName" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkAccountResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:costomerAccount" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="costomerAccount">
+<xs:sequence>
+<xs:element name="accountId" type="xs:int"/>
+<xs:element name="accountName" type="xs:string" minOccurs="0"/>
+<xs:element name="balance" type="xs:float"/>
+<xs:element name="dateCreated" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkBalance">
+<xs:sequence>
+<xs:element name="acc" type="tns:costomerAccount" minOccurs="0"/>
+<xs:element name="moneyToPaid" type="xs:float"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkBalanceResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="payment">
+<xs:sequence>
+<xs:element name="accPaid" type="tns:costomerAccount" minOccurs="0"/>
+<xs:element name="moneyToPaid" type="xs:float"/>
+<xs:element name="webId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paymentResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
